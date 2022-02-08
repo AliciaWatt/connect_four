@@ -13,15 +13,19 @@ RSpec.describe Cell do
     expect(@cell.coordinates).to be_a(String)
   end
 
+  it 'can render a "O" whe it is occupied by a computer' do
+    expect(@cell.render).to eq('O')
+  end
+
+  it 'can render a "X" when it is occupied by a player' do
+    expect(@cell.render).to eq('X')
+  end
+
   it 'can render a "." when it is unoccupied' do
     expect(@cell.render). to eq(".")
   end
 
-  it 'can render a "X" when it is occupied by a Human_Player' do
-    expect(@cell.render).to eq('X')
-  end
 
-  it 'can render a "O" whe it is occupied by a Computer_Player' do
-    expect(@cell.render).to eq('O')
-  end
+
+
 end

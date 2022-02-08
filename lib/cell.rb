@@ -5,4 +5,14 @@ class Cell
     @type_of_player = type_of_player
     @coordinates = coordinates
   end
+
+  def render
+    if @type_of_player == 'computer'
+      'O'
+    elsif @type_of_player == 'player'
+      'X'
+    else
+      '.'
+    end
+  end
 end
