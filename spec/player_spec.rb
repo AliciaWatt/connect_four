@@ -3,7 +3,6 @@ require './lib/computer'
 require './lib/game'
 require './lib/player'
 
-
 RSpec.describe Player do
   before(:each) do
     @player = Player.new

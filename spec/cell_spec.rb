@@ -22,10 +22,6 @@ RSpec.describe Cell do
   end
 
   it 'can render a "." when it is unoccupied' do
-    expect(@cell.render). to eq(".")
+    expect(@cell.render).to eq(".")
   end
-
-
-
-
 end
