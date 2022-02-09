@@ -4,7 +4,9 @@ require './lib/board'
 
 class Board
   def board
-    @new_board = create_board
+    @board = []
+    @board.generate
+    @board.display
   end
 end
 
@@ -13,7 +15,12 @@ RSpec.describe Board do
     @board = Board.new
   end
 
-  it 'exists'do
+  it 'exists' do
     expect(@board).to be_an_instance_of(Board)
   end
+
+  xit 'creates an empty array for the board' do
+    expect(@board).to eq([])
+  end
+
 end
