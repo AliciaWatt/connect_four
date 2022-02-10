@@ -1,9 +1,9 @@
 class Cell
-  attr_reader :type_of_player, :coordinates
+  attr_reader :coordinate, :type_of_player
 
-  def initialize(type_of_player = nil, coordinates = "")
+  def initialize(coordinate = "")
+    @coordinate = coordinate
     @type_of_player = type_of_player
-    @coordinates = coordinates
   end
 
   def render
