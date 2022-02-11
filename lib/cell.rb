@@ -15,4 +15,12 @@ class Cell
       '.'
     end
   end
+
+  def occupied?
+    !@type_of_player.nil?
+  end
+
+  def place_piece(type_of_player)
+    @type_of_player = type_of_player
+  end
 end
