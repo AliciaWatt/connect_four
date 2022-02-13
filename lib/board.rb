@@ -28,3 +28,4 @@ class Board
     grid
   end
 end
+# binding.pry
