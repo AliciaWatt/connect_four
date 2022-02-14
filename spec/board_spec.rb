@@ -25,7 +25,7 @@ RSpec.describe Board do
 
     it 'returns a correct string' do
       expect { print('render') }.to output.to_stdout
-      #expect(@board.render).to eq(" A B C D E F G
+      #expect(@board.render).to output(" A B C D E F G
  # . . . . . . .
  # . . . . . . .
  # . . . . . . .
@@ -35,8 +35,8 @@ RSpec.describe Board do
     end
   end
 
-  xdescribe '#cell_avalilable?' do
-    #binding.pry
+  describe '#cell_avalilable?' do
+    # binding.pry
     it 'can check if a cell is cell_available' do
       @board.cells['A1'] = @coordinate = 'A1', @type_of_player = 'X'
       expect(@board.cell_available?(['A1'])).to eq(false)
