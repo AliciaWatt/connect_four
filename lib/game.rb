@@ -9,13 +9,7 @@ class Game
 
   def print_welcome_message
     system('clear')
-    puts "  .........WELCOME TO.........."
-    puts "  ............................."
-    puts "  .                           ."
-    puts "  .         CONNECT 4         ."
-    puts "  .                           ."
-    puts "  ............................."
-    puts "  Enter p to play. Enter q to quit"
+    puts "Welcome to CONNECT FOUR, Enter p to play. Enter q to quit"
     sleep(3)
     system('clear')
     exit

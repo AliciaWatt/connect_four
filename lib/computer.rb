@@ -1,6 +1,10 @@
 class Computer
-  attr_reader :generate_cells
-  def initialize(generate_cells)
-    @generate_cells = generate_cells
+  attr_reader :cells_range
+  def initialize(cells_range)
+    @cells_range = cells_range
   end
+
+  def column_selection
+    @cells_range.sample
+  end 
 end
