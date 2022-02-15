@@ -15,7 +15,7 @@ class Game
     exit
   end
 
-   def starting_input
+  def starting_input
     option = gets.chomp
     system('clear')
     until option.match?(/[p,q]{1}/i) && option.length == 1

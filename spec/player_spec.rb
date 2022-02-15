@@ -1,5 +1,4 @@
 require './lib/board'
-require './lib/computer'
 require './lib/game'
 require './lib/player'
 
@@ -9,15 +8,13 @@ RSpec.describe Player do
     @player = Player.new
   end
   it 'exists' do
-    expect(@player).to be_a Player
+    expect(@player).to be_instance_of Player
   end
 
   it 'has attributes' do
-    expect(player.name).to eq "Player"
-    expect(player.column_choice).to eq("")
-  end
+    @player_1 = Player.new
+    expect(@player_1.name).to eq("Player")
+    expect(@player_1.piece).to eq("X")
 
-  it 'can place a piece in the choosen column'do
-    expect(@board.cells["A1"]).to eq("X")
   end
 end

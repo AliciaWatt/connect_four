@@ -1,6 +1,6 @@
 class Cell
   attr_accessor :type_of_player
-  attr_reader :coordinate 
+  attr_reader :coordinate
 
   def initialize(coordinate = "")
     @coordinate = coordinate
