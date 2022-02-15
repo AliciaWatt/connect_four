@@ -39,26 +39,28 @@ class Board
    else
      return false
    end
-
-   def letter_columns
-     columns = [
-     A = ["A1", "A2", "A3", "A4", "A4", "A5", "A6"],
-     B = ["B1", "B2", "B3", "B4", "B4", "B5", "B6"],
-     C = ["C1", "C2", "C3", "C4", "C4", "C5", "C6"],
-     D = ["D1", "D2", "D3", "D4", "D4", "D5", "D6"],
-     E = ["E1", "E2", "E3", "E4", "E4", "E5", "E6"],
-     F = ["F1", "F2", "F3", "F4", "F4", "F5", "F6"],
-     G = ["G1", "G2", "G3", "G4", "G4", "G5", "G6"]
-   ]
   end
 
-  def invalid(letter, piece)
-    if user_input != ('A'..'G')
-      puts "Invalid input. Please choose a proper letter."
-    else user_input = ('A'..'G') && column_full?
-      puts "Column is full. Please choose an empty column."
-
-
-
-  end
+def column
+  @cells.keys.group_by { |letter| letter[0].to_str }
 end
+  #  def letter_columns(letter)
+  #    columns = [
+  #    A = ["A1", "A2", "A3", "A4", "A4", "A5", "A6"],
+  #    B = ["B1", "B2", "B3", "B4", "B4", "B5", "B6"],
+  #    C = ["C1", "C2", "C3", "C4", "C4", "C5", "C6"],
+  #    D = ["D1", "D2", "D3", "D4", "D4", "D5", "D6"],
+  #    E = ["E1", "E2", "E3", "E4", "E4", "E5", "E6"],
+  #    F = ["F1", "F2", "F3", "F4", "F4", "F5", "F6"],
+  #    G = ["G1", "G2", "G3", "G4", "G4", "G5", "G6"]
+  #  ]
+  # end
+
+  # def invalid(letter, piece)
+  #   if user_input != ('A'..'G')
+  #     puts "Invalid input. Please choose a proper letter."
+  #   else user_input = ('A'..'G') && column_full?
+  #     puts "Column is full. Please choose an empty column."
+  #
+end
+binding.pry
