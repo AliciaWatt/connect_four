@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'cell'
 
 class Board
   attr_accessor :generate_cells
@@ -64,6 +65,7 @@ class Board
       puts "Invalid input. Please choose a proper letter."
     else user_input = ('A'..'G') && column_full?
       puts "Column is full. Please choose an empty column."
+
     end
   end
 # def column

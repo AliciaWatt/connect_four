@@ -1,9 +1,9 @@
-require_relative 'board'
+require './lib/board'
 
 class Game
   def start
     print_welcome_message
-    # start_input
+    start_input
     prints_board
   end
 
@@ -14,6 +14,21 @@ class Game
     system('clear')
     exit
   end
+
+  def starting_input
+    option = gets.chomp
+    system('clear')
+    until option.match?(/[p,q]{1}/i) && option.length == 1
+      puts "Welcome to CONNECT FOUR, Enter p to play. Enter q to quit"
+      option = gets.chomp
+      system('clear')
+    end
+    option
+  end
+
+  # def prints_board
+  #   puts @board.render
+  # end
 end
 
 #   def start_input
