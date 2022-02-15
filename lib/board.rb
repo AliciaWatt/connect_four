@@ -18,11 +18,25 @@ class Board
     @cells
   end
 
-  def render
+  def grid
     values = []
-    letters = ['A','B','C','D','E','F','G'].join
     values << @cells.values.each_slice(7).to_a
-    grid = values[0]
+    values[0]
+  end
+
+  def columns
+    grid.transpose
+  end
+
+  def place_piece(user_input)
+    @board.cells.keys.reverse.group_by { |letter| letter[0] }
+    "Please select a valid column"
+    if user_input = get.chomp.to_str.upcase
+      fill in respective array
+  end
+
+  def render
+    letters = ['A','B','C','D','E','F','G'].join
     puts letters
     grid.map do |row|
       row.map do |cell|
@@ -41,9 +55,21 @@ class Board
    end
   end
 
-def column
-  @cells.keys.group_by { |letter| letter[0].to_str }
-end
+  # def column_full?
+  #   checks for full colum through place piece?
+  # end
+
+  def invalid?
+    if user_input != ('A'..'G')
+      puts "Invalid input. Please choose a proper letter."
+    else user_input = ('A'..'G') && column_full?
+      puts "Column is full. Please choose an empty column."
+    end
+  end
+# def column
+#
+# end
+
   #  def letter_columns(letter)
   #    columns = [
   #    A = ["A1", "A2", "A3", "A4", "A4", "A5", "A6"],
@@ -56,11 +82,12 @@ end
   #  ]
   # end
 
-  # def invalid(letter, piece)
-  #   if user_input != ('A'..'G')
-  #     puts "Invalid input. Please choose a proper letter."
-  #   else user_input = ('A'..'G') && column_full?
-  #     puts "Column is full. Please choose an empty column."
+
   #
 end
+board = Board.new
+board.cells["A1"] = "X"
+board.cells["A2"] = "X"
+board.cells["A3"] = "X"
+board.cells["A4"] = "X"
 binding.pry
