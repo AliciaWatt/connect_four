@@ -33,9 +33,12 @@ RSpec.describe Board do
     end
   end
 
-    xit 'can check for full columns' do
-      @board.letter_columns[A].each_with
-      expect(@board.letter_columns(A)).to eq(true)
+    xit 'creates columns for input' do
+      @board = Board.new
+      @board.grid
+      @board.columns
+      @board.columns.each_index(@a) { |cell| cell = "X" }
+      # expect(@board.letter_columns(@a)).to eq(true)
     end
 
     xit 'can check for invalid inputs' do

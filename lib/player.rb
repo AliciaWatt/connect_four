@@ -8,3 +8,10 @@ class Player
   end
   
 end
+
+
+def places_piece(letter)
+  gets player_input.chomp.upcase
+end
+
+
