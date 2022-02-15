@@ -1,9 +1,10 @@
 class Player
-  attr_accessor :name
-  attr_reader   :mark
 
-  def initialize(name:, piece:)
+  attr_reader :name, :piece
+
+  def initialize(name="Player")
     @name = name
-    @piece = piece
+    @piece = "X"
   end
+  
 end

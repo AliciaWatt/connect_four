@@ -1,6 +1,7 @@
 require 'rspec'
 require 'pry'
 require './lib/board'
+require './lib/cell'
 
 RSpec.describe Board do
   # before(:each) do

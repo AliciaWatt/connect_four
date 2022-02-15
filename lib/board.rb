@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'cell'
 
 class Board
   attr_accessor :generate_cells
@@ -57,8 +58,30 @@ class Board
       puts "Invalid input. Please choose a proper letter."
     else user_input = ('A'..'G') && column_full?
       puts "Column is full. Please choose an empty column."
-
-
-
   end
+
+  def column
+      @cells.keys.group_by { |letter| letter[0].to_str }
+
+    end
+
+
+  # def find_all_cells_in_column(column)
+  #   @cells.find_all do |cell|
+  #     cell.coordinates.chars[0] == column
+  #   end
+  #   end
+
+
+
+  # def invalid(letter, piece)
+  #   if user_input != ('A'..'G')
+  #     puts "Invalid input. Please choose a proper letter."
+  #   else user_input = ('A'..'G') && column_full?
+  #     puts "Column is full. Please choose an empty column."
+  #
+  #
+  #
+  # end
 end
+# require 'pry'; binding.pry
