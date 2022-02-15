@@ -1,46 +1,48 @@
 require 'rspec'
 require 'pry'
-require './lib/cell'
 require './lib/board'
 
 RSpec.describe Board do
-  before(:each) do
-    @board = Board.new
-    @cell = Cell.new
-  end
+  # before(:each) do
+  #   @board = Board.new
+  # end
 
   describe '#cells' do
     it 'returns keys = coordinates value as cell objects' do
+      @board = Board.new
       expect(@board.cells).to be_instance_of Hash
-      @board.cells.each do |_coordinate, cell|
-        expect(cell).to be_instance_of Cell
       end
     end
   end
 
-  describe '#render' do
-    it 'it returns a string' do
-      expect(@board.render).to be_instance_of String
+# binding.pry
+  describe "grid" do
+    it 'returns a correct string' do
+      @board = Board.new
+      @board.render
+      expect { print('render') }.to output.to_stdout
     end
 
-    it 'returns a correct string' do
-      expect { print('render') }.to output.to_stdout
-      #expect(@board.render).to output(" A B C D E F G
- # . . . . . . .
- # . . . . . . .
- # . . . . . . .
- # . . . . . . .
- # . . . . . . .
- # . . . . . . .")
-    end
-  end
 
   describe '#cell_avalilable?' do
-    # binding.pry
     it 'can check if a cell is cell_available' do
-      @board.cells['A1'] = @coordinate = 'A1', @type_of_player = 'X'
-      expect(@board.cell_available?(['A1'])).to eq(false)
+      @board = Board.new
+      @board.cells['A1'] = 'X'
+      expect(@board.cell_available?('A1')).to eq(false)
     end
   end
+
+    xit 'can check for full columns' do
+      @board.letter_columns[A].each_with
+      expect(@board.letter_columns(A)).to eq(true)
+    end
+
+    xit 'can check for invalid inputs' do
+    @board = Board.new
+    expect(column_full).to eq("Invalid input. Please choose a proper letter.")
+    expect(column_full).to eq("Column is full. Please choose an empty column.")
+    end
+
 end
+
 # require "pry"; binding.pry
