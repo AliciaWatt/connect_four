@@ -3,7 +3,7 @@ require_relative 'cell'
 
 class Board
   attr_accessor :generate_cells
-  attr_reader :cells, :generate_cells
+  attr_reader :cells, :generate_cells, :piece
 
   def initialize
     @cells = Hash.new
@@ -29,13 +29,15 @@ class Board
     grid.transpose
   end
 
-  def place_piece(user_input)
-    @board.cells.keys.reverse.group_by { |letter| letter[0] }
-    "Please select a valid column"
-    if user_input = get.chomp.to_str.upcase
-      # fill in respective array
-    end
-  end
+
+#   def place_piece(piece)
+#     @board.cells.keys.reverse.group_by { |letter| letter[0] }
+#     "Please select a valid column"
+#     if user_input = get.chomp.to_str.upcase
+#       fill in respective array
+#   end
+# end
+
 
   def render
     letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'].join
@@ -57,33 +59,57 @@ class Board
     end
   end
 
-  # def column_full?
-  #   checks for full colum through place piece?
-  # end
-
-  def invalid?
-    if user_input != ('A'..'G')
-      puts "Invalid input. Please choose a proper letter."
-    else user_input = ('A'..'G') && column_full?
-         puts "Column is full. Please choose an empty column."
-
+  def column_full?(letter)
+    if columns.values_at(letter) == ('.')
+      return false
+    else
+      return true
     end
   end
-  # def column
-  #
+
+
+  # def invalid
+  #   if user_input != letters
+  #     puts "Invalid input. Please choose a proper letter."
+  #   else user_input = letters && column_full?
+  #     puts "Column is full. Please choose an empty column."
+  #   end
   # end
 
-  #  def letter_columns(letter)
-  #    columns = [
-  #    A = ["A1", "A2", "A3", "A4", "A4", "A5", "A6"],
-  #    B = ["B1", "B2", "B3", "B4", "B4", "B5", "B6"],
-  #    C = ["C1", "C2", "C3", "C4", "C4", "C5", "C6"],
-  #    D = ["D1", "D2", "D3", "D4", "D4", "D5", "D6"],
-  #    E = ["E1", "E2", "E3", "E4", "E4", "E5", "E6"],
-  #    F = ["F1", "F2", "F3", "F4", "F4", "F5", "F6"],
-  #    G = ["G1", "G2", "G3", "G4", "G4", "G5", "G6"]
-  #  ]
-  # end
+
+  def test
+    columns.map do |row|
+      row.each_cons(6) do |cell|
+        print cell.join
+      end
+      puts ""
+    end
+    return
+  end
+
+
+  def diagonals
+    @du1 = [] ; @du2 = []; @du3 = []; @du4 = []; @du5 = []; @du6 = []
+    @dd1 = [] ; @dd2 = []; @dd3 = []; @dd4 = []; @dd5 = []; @dd6 = []
+
+    @du1 = [['A1'], ['B2'], ['C3'], ['D4'], ['E5'], ['F6']]
+    @du2 = [['B1'], ['C2'], ['D3'], ['E4'], ['F5'], ['G6']]
+    @du3 = [['C1'], ['D2'], ['E3'], ['F4'], ['G5']]
+    @du4 = [['D1'], ['E2'], ['F3'], ['G4']]
+    @du5 = [['A2'], ['B3'], ['C4'], ['D5'], ['E6']]
+    @du6 = [['A3'], ['B4'], ['D5'], ['E6']]
+    @dd1 = [['G1'], ['F2'], ['E3'], ['D4'], ['C5'], ['B6']]
+    @dd2 = [['F1'], ['E2'], ['D3'], ['C4'], ['B5'], ['A6']]
+    @dd3 = [['E1'], ['D2'], ['C3'], ['B4'], ['A5']]
+    @dd4 = [['D1'], ['C2'], ['B3'], ['A4']]
+    @dd5 = [['G2'], ['F3'], ['E4'], ['D5'], ['C6']]
+    @dd6 = [['G3'], ['F4'], ['E5'], ['D6']]
+
+    diagonal_up = [@du1, @du2, @du3, @du4, @du5, @du6]
+    diagonal_down = [@dd1, @dd2, @dd3, @dd4, @dd5, @dd6]
+  end
+binding.pry
+
 end
 board = Board.new
 board.cells["A1"] = "X"

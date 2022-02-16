@@ -30,20 +30,56 @@ describe "grid" do
       @board.cells['A1'] = 'X'
       expect(@board.cell_available?('A1')).to eq(false)
     end
-  end
 
-  xit 'creates columns for input' do
-    @board = Board.new
-    @board.grid
-    @board.columns
-    @board.columns.each_index(@a) { |cell| cell = "X" }
-    # expect(@board.letter_columns(@a)).to eq(true)
-  end
 
-  xit 'can check for invalid inputs' do
-    @board = Board.new
-    expect(column_full).to eq("Invalid input. Please choose a proper letter.")
-    expect(column_full).to eq("Column is full. Please choose an empty column.")
+    it 'creates columns for input' do
+      @board = Board.new
+      @board.grid
+      @board.columns
+
+      @board.cells['A1'] = 'X'
+      @board.cells['A2'] = 'X'
+      @board.cells['A3'] = 'X'
+      @board.cells['A4'] = 'X'
+      @board.cells['A5'] = 'X'
+      @board.cells['A6'] = 'X'
+
+      expect(@board.columns[0]).to eq(['X', 'X', 'X', 'X', 'X', 'X'])
+    end
+
+    it 'can check if a column is full' do
+      @board = Board.new
+      @board.grid
+      @board.columns
+
+      @board.cells['A1'] = 'X'
+      @board.cells['A2'] = 'X'
+      @board.cells['A3'] = 'X'
+      @board.cells['A4'] = 'X'
+      @board.cells['A5'] = 'X'
+      @board.cells['A6'] = 'X'
+
+      piece = "A"
+
+      expect(@board.column_full?(0)).to eq(true)
+    end
+
+    xit 'can check for invalid inputs' do
+      @board = Board.new
+      @board.grid
+      @board.columns
+
+      @board.cells['A1'] = 'X'
+      @board.cells['A2'] = 'X'
+      @board.cells['A3'] = 'X'
+      @board.cells['A4'] = 'X'
+      @board.cells['A5'] = 'X'
+      @board.cells['A6'] = 'X'
+
+      expect(@board.invalid).to eq("Invalid input. Please choose a proper letter.")
+      expect(@board.invliad).to eq("Column is full. Please choose an empty column.")
+    end
+
   end
 end
 
