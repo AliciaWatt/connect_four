@@ -15,12 +15,12 @@ class Game
   #
   def initialize
     @board = Board.new
-  #   @player = Player.new(@board.place_piece)
-  #   @computer = Computer.new(@board.place_piece)
-  #   @player_places = []
-  #   @computer_places = []
-  #   @win_type
-  #   @winner = ''
+    #   @player = Player.new(@board.place_piece)
+    #   @computer = Computer.new(@board.place_piece)
+    #   @player_places = []
+    #   @computer_places = []
+    #   @win_type
+    #   @winner = ''
   end
 
   def start
@@ -30,7 +30,6 @@ class Game
     # take_turns
     # end_game
     # restart
-
   end
 
   def print_welcome_message
@@ -39,14 +38,14 @@ class Game
   end
 
   def start_input
-  if  starting_input.downcase == 'q'
-    quit
-  # else
-  #   starting_input.downcase == 'p'
-  #   puts @board.render
-    system('clear')
+    if starting_input.downcase == 'q'
+      quit
+      # else
+      #   starting_input.downcase == 'p'
+      #   puts @board.render
+      system('clear')
+    end
   end
-end
 
   def quit
     system('clear')
@@ -55,7 +54,6 @@ end
     system('clear')
     exit
   end
-
 
   def starting_input
     option = gets.chomp

@@ -29,15 +29,13 @@ class Board
     grid.transpose
   end
 
-
   def place_piece(piece)
     @board.cells.keys.reverse.group_by { |letter| letter[0] }
     "Please select a valid column"
     if user_input = get.chomp.to_str.upcase
 
+    end
   end
-end
-
 
   def render
     letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'].join
@@ -67,7 +65,6 @@ end
     end
   end
 
-
   # def invalid
   #   if user_input != letters
   #     puts "Invalid input. Please choose a proper letter."
@@ -75,7 +72,6 @@ end
   #     puts "Column is full. Please choose an empty column."
   #   end
   # end
-
 
   def test
     columns.map do |row|
@@ -87,10 +83,9 @@ end
     return
   end
 
-
   def diagonals
-    @du1 = [] ; @du2 = []; @du3 = []; @du4 = []; @du5 = []; @du6 = []
-    @dd1 = [] ; @dd2 = []; @dd3 = []; @dd4 = []; @dd5 = []; @dd6 = []
+    @du1 = []; @du2 = []; @du3 = []; @du4 = []; @du5 = []; @du6 = []
+    @dd1 = []; @dd2 = []; @dd3 = []; @dd4 = []; @dd5 = []; @dd6 = []
 
     @du1 = [['A1'], ['B2'], ['C3'], ['D4'], ['E5'], ['F6']]
     @du2 = [['B1'], ['C2'], ['D3'], ['E4'], ['F5'], ['G6']]
@@ -108,8 +103,7 @@ end
     diagonal_up = [@du1, @du2, @du3, @du4, @du5, @du6]
     diagonal_down = [@dd1, @dd2, @dd3, @dd4, @dd5, @dd6]
   end
-# binding.pry
-
+  # binding.pry
 end
 board = Board.new
 board.cells["A1"] = "X"
