@@ -19,6 +19,7 @@ RSpec.describe Cell do
   end
 
   xit 'can render a "X" when it is occupied by a player' do
+    cell = Cell.new('player')
     expect(@cell.render).to eq('X')
   end
 
@@ -26,6 +27,28 @@ RSpec.describe Cell do
     expect(@cell.render).to eq('.')
   end
 
-  it 'can place a piece' do
+  it 'can tell if it is occupied' do
+    cell = Cell.new('computer')
+    expect(cell.occupied?).to eq(false)
+    expect(cell.occupied?).to_not eq(true)
+  end
+
+  it "can tell what coordinates it is when unoccupied" do
+    cell = Cell.new("A1")
+    expect(cell.coordinate).to eq("A1")
+  end
+
+  it 'can tell what coordinates it is when occupied' do
+    cell = Cell.new("A1")
+    expect(cell.coordinate).to eq("A1")
+  end
+
+  it 'can place a piece on an empty cell' do
+    cell = Cell.new
+    expect(cell.occupied?).to eq(false)
+    cell.place_piece('player')
+
+    expect(cell.occupied?).to eq(true)
+    expect(cell.type_of_player).to eq("player")
   end
 end

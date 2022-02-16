@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'cell'
 
 class Board
   attr_accessor :generate_cells
