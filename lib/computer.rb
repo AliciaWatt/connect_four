@@ -1,10 +1,10 @@
-class Computer
-  attr_reader :cells_range
-  def initialize(cells_range)
-    @cells_range = cells_range
-  end
-
-  def column_selection
-    @cells_range.sample
-  end 
-end
+# class Computer
+#   attr_reader :place_piece
+#   def initialize(place_piece)
+#     @place_piece = place_piece
+#   end
+#
+#   def column_selection
+#     @place_piece.sample
+#   end
+# end

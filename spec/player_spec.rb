@@ -15,6 +15,5 @@ RSpec.describe Player do
     @player_1 = Player.new
     expect(@player_1.name).to eq("Player")
     expect(@player_1.piece).to eq("X")
-
   end
 end

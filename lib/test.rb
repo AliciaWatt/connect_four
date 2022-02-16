@@ -20,7 +20,7 @@ class Board
 
   def grid
     values = []
-    letters = ['A','B','C','D','E','F','G'].join
+    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'].join
     values << @cells.values.each_slice(7).to_a
     grid = values[0]
     puts letters
@@ -31,14 +31,12 @@ class Board
       puts ""
     end
   end
-  #
 
-
-# grid.map do |row|
-#   row.map do |cell|
-#     print cell
-#   puts ""
-# end
+  # grid.map do |row|
+  #   row.map do |cell|
+  #     print cell
+  #   puts ""
+  # end
 
   #
   #
@@ -60,8 +58,7 @@ class Board
   # grid[0][6] << grid[0][6].join
   binding.pry
   # grid
-    # puts grid
+  # puts grid
 end
-
 
 binding.pry
