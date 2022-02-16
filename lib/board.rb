@@ -30,13 +30,13 @@ class Board
   end
 
 
-#   def place_piece(piece)
-#     @board.cells.keys.reverse.group_by { |letter| letter[0] }
-#     "Please select a valid column"
-#     if user_input = get.chomp.to_str.upcase
-#       fill in respective array
-#   end
-# end
+  def place_piece(piece)
+    @board.cells.keys.reverse.group_by { |letter| letter[0] }
+    "Please select a valid column"
+    if user_input = get.chomp.to_str.upcase
+
+  end
+end
 
 
   def render
@@ -108,7 +108,7 @@ class Board
     diagonal_up = [@du1, @du2, @du3, @du4, @du5, @du6]
     diagonal_down = [@dd1, @dd2, @dd3, @dd4, @dd5, @dd6]
   end
-binding.pry
+# binding.pry
 
 end
 board = Board.new
