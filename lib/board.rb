@@ -33,11 +33,12 @@ class Board
     @board.cells.keys.reverse.group_by { |letter| letter[0] }
     "Please select a valid column"
     if user_input = get.chomp.to_str.upcase
-      fill in respective array
+      # fill in respective array
+    end
   end
 
   def render
-    letters = ['A','B','C','D','E','F','G'].join
+    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'].join
     puts letters
     grid.map do |row|
       row.map do |cell|
@@ -49,11 +50,11 @@ class Board
   end
 
   def cell_available?(letter)
-   if @cells[letter] == "."
-     return true
-   else
-     return false
-   end
+    if @cells[letter] == "."
+      return true
+    else
+      return false
+    end
   end
 
   # def column_full?
@@ -64,13 +65,13 @@ class Board
     if user_input != ('A'..'G')
       puts "Invalid input. Please choose a proper letter."
     else user_input = ('A'..'G') && column_full?
-      puts "Column is full. Please choose an empty column."
+         puts "Column is full. Please choose an empty column."
 
     end
   end
-# def column
-#
-# end
+  # def column
+  #
+  # end
 
   #  def letter_columns(letter)
   #    columns = [
@@ -83,13 +84,10 @@ class Board
   #    G = ["G1", "G2", "G3", "G4", "G4", "G5", "G6"]
   #  ]
   # end
-
-
-  #
 end
 board = Board.new
 board.cells["A1"] = "X"
 board.cells["A2"] = "X"
 board.cells["A3"] = "X"
 board.cells["A4"] = "X"
-binding.pry
+# binding.pry
