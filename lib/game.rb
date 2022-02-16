@@ -13,9 +13,7 @@ class Game
                :win_type,
                :winner
 
-
   def initialize
-
     @player = Player.new(@board.place_piece)
     @computer = Computer.new(@board.place_piece)
     @player_places = []
@@ -41,76 +39,76 @@ class Game
       if turn.invalid?(player_input)
         puts "Column" + " #{user_input}, is not a valid choice. Please try again."
         take_turns
+      end
+      player_column = player.column_choice
+      turn.player_places << @board.place_piece(user_input)
+      turn.place_player_piece(column)
+
+      evaluate_competitor_turn(turn, 'player')
+
+      computer_column = turn.find_computer_column(turn.computer_choice)
+      turn.computer_places << @board.place_piece(user_input)
+      turn.place_computer_piece(column)
+
+      evaluate_competitor_turn(turn, 'computer')
+
+      @board.render
+      puts "Column" + "#{user_input}" + ", great choice!"
     end
-    player_column = player.column_choice
-    turn.player_places << @board.place_piece(user_input)
-    turn.place_player_piece(column)
+  end
 
-    evaluate_competitor_turn(turn, 'player')
+  def evaluate_competitor_turn(turn, type_of_player)
+    if turn.evaluate_tie(turn)
+      end_game('', true)
+    end
 
-    computer_column = turn.find_computer_column(turn.computer_choice)
-    turn.computer_places << @board.place_piece(user_input)
-    turn.place_computer_piece(column)
+    if turn.evaluate_vertical(type_of_player) ||
+       turn.evaluate_horizontal(type_of_player) ||
+       turn.evaluate_diagonal(type_of_player)
+      assign_win_type(turn.win_type)
+      assign_winner(type_of_player)
+      end_game(type_of_player)
+    end
+  end
 
-    evaluate_competitor_turn(turn, 'computer')
+  def assign_win_type(win_style)
+    @win_type = win_style
+  end
 
+  def assign_winner(winner)
+    @winner = winner
+  end
+
+  def end_game(type_of_player, tie = false)
     @board.render
-    puts "Column" + "#{user_input}" + ", great choice!"
+    if tie == true
+      puts "We Tied"
+      puts "Play Again?"
+      print '>[Yes/No]'
+      reply = gets.chomp.upcase
+      restart?(reply)
+    elsif type_of_player == 'player'
+      puts "You are the winner, with a #{win_style}!"
+      puts "Wanna play again?"
+      print '>[Yes/No]'
+      reply = gets.chomp.upcase
+      restart?(reply)
+    else
+      puts "Computer Wins, with a #{win_style}!"
+      puts "Wanna play again?"
+      print '>[Yes/No]'
+      reply = gets.chomp.upcase
+      restart?(reply)
+    end
   end
-end
 
-def evaluate_competitor_turn(turn, type_of_player)
-  if turn.evaluate_tie(turn)
-  end_game('', true)
-end
-
-  if turn.evaluate_vertical(type_of_player) ||
-    turn.evaluate_horizontal(type_of_player) ||
-    turn.evaluate_diagonal(type_of_player)
-    assign_win_type(turn.win_type)
-    assign_winner(type_of_player)
-    end_game(type_of_player)
+  def restart
+    start
   end
-end
 
-def assign_win_type(win_style)
-  @win_type = win_style
-end
-
-def assign_winner(winner)
-  @winner = winner
-end
-
-def end_game(type_of_player, tie=false)
-  @board.render
-  if tie == true
-    puts "We Tied"
-    puts "Play Again?"
-    print '>[Yes/No]'
-    reply = gets.chomp.upcase
-    restart?(reply)
-  elsif type_of_player == 'player'
-    puts "You are the winner, with a #{win_style}!"
-    puts "Wanna play again?"
-    print '>[Yes/No]'
-    reply = gets.chomp.upcase
-    restart?(reply)
-  else
-    puts "Computer Wins, with a #{win_style}!"
-    puts "Wanna play again?"
-    print '>[Yes/No]'
-    reply = gets.chomp.upcase
-    restart?(reply)
-  end
-end
-
-def restart
-  start
-end
-
-    # def restart?(reply)
-    #   if reply == 'Y'
-    #   end
+  # def restart?(reply)
+  #   if reply == 'Y'
+  #   end
 
   # def start_input
   #   system('clear')
@@ -128,5 +126,4 @@ end
     system('clear')
     exit
   end
-
 end

@@ -23,15 +23,13 @@ RSpec.describe Turn do
   end
 
   it 'can ask a player to choose a column' do
-    expect(turn.prompt_player). to be_a String
+    expect(turn.prompt_player).to be_a String
   end
 
   it 'can check if players column selection is valid' do
-
   end
 
   it 'can place the players piece in the correct cell' do
-
   end
 
   it 'can render the board after the players piece is placed' do
@@ -49,6 +47,31 @@ RSpec.describe Turn do
   end
 
   it 'can render the board after the computer places a piece' do
-    expect(turn.board.render).to be_an Array 
+    expect(turn.board.render).to be_an Array
+  end
+
+  it 'can have player and computer pieces on the board' do
+    column = "A"
+    turn.place_player_piece(column)
+    expect(turn.board.render).to be_an(Array)
+
+    column = turn.computer_choice
+    turn.place_computer_piece(column)
+    expect(turn.board.render).to be_an Array
+  end
+
+  it 'can evaluate a horizontal win' do
+  end
+
+  it 'can evaluate a vertical win' do
+  end
+
+  it 'can evaluate a players win' do
+    turn = Turn.new(player, computer, board)
+    column = "A"
+
+    board.render
+
+    expect(game.end_game('player')).to eq nil
   end
 end

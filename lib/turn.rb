@@ -21,8 +21,6 @@ class Turn
     empty?
   end
 
-    
-
   # def prompt_player
   #   puts
   #   puts "Which column would you like to select?"
@@ -39,5 +37,4 @@ class Turn
   #   end
   #   option
   # end
-
 end
