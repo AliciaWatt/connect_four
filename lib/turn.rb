@@ -17,6 +17,12 @@ class Turn
     @winner = ''
   end
 
+  def full_board?
+    empty?
+  end
+
+    
+
   # def prompt_player
   #   puts
   #   puts "Which column would you like to select?"
