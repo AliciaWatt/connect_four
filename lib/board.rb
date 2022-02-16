@@ -29,6 +29,7 @@ class Board
     grid.transpose
   end
 
+
 #   def place_piece(piece)
 #     @board.cells.keys.reverse.group_by { |letter| letter[0] }
 #     "Please select a valid column"
@@ -37,8 +38,9 @@ class Board
 #   end
 # end
 
+
   def render
-    letters = ['A','B','C','D','E','F','G'].join
+    letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'].join
     puts letters
     grid.map do |row|
       row.map do |cell|
@@ -50,11 +52,11 @@ class Board
   end
 
   def cell_available?(letter)
-   if @cells[letter] == "."
-     return true
-   else
-     return false
-   end
+    if @cells[letter] == "."
+      return true
+    else
+      return false
+    end
   end
 
   def column_full?(letter)
@@ -65,6 +67,7 @@ class Board
     end
   end
 
+
   # def invalid
   #   if user_input != letters
   #     puts "Invalid input. Please choose a proper letter."
@@ -72,6 +75,7 @@ class Board
   #     puts "Column is full. Please choose an empty column."
   #   end
   # end
+
 
   def test
     columns.map do |row|
@@ -82,6 +86,7 @@ class Board
     end
     return
   end
+
 
   def diagonals
     @du1 = [] ; @du2 = []; @du3 = []; @du4 = []; @du5 = []; @du6 = []
@@ -104,10 +109,11 @@ class Board
     diagonal_down = [@dd1, @dd2, @dd3, @dd4, @dd5, @dd6]
   end
 binding.pry
+
 end
 board = Board.new
 board.cells["A1"] = "X"
 board.cells["A2"] = "X"
 board.cells["A3"] = "X"
 board.cells["A4"] = "X"
-binding.pry
+# binding.pry
