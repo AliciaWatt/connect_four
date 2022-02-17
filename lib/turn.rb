@@ -41,9 +41,6 @@ class Turn
     end
   end
 
-
-
-
   # def type
   #   if @board.grid == rows
   #     :horizontal
@@ -55,5 +52,4 @@ class Turn
   #     :diagonal_down
   #   end
   # end
-
 end

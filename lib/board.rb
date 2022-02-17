@@ -3,7 +3,7 @@ require_relative 'cell'
 
 class Board
   attr_accessor :generate_cells, :cells
-  attr_reader  :generate_cells, :piece
+  attr_reader :generate_cells, :piece
 
   def initialize
     @cells = Hash.new
@@ -65,7 +65,7 @@ class Board
     if piece != cell
       puts "Invalid input. Please choose a proper cell."
     else piece = cell && column_full?
-      puts "Column is full. Please choose an empty column."
+         puts "Column is full. Please choose an empty column."
     end
   end
 
@@ -73,11 +73,9 @@ class Board
     if piece != letters
       puts "Invalid input. Please choose a proper letter."
     else piece = letters && column_full?
-      puts "Column is full. Please choose an empty column."
+         puts "Column is full. Please choose an empty column."
     end
   end
-
-
 
   def diagonals
     @du1 = []; @du2 = []; @du3 = []; @du4 = []; @du5 = []; @du6 = []
@@ -99,5 +97,4 @@ class Board
     diagonal_up = [@du1, @du2, @du3, @du4, @du5, @du6]
     diagonal_down = [@dd1, @dd2, @dd3, @dd4, @dd5, @dd6]
   end
-
 end
