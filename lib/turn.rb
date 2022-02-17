@@ -26,6 +26,4 @@ class Turn
   #   puts "Which column would you like to select?"
   #   option = gets.chomp.upcase
   #   if
-
-
 end

@@ -5,22 +5,8 @@ require './lib/computer'
 require './lib/turn'
 
 class Game
-  # attr_reader  :board,
-  #              :player,
-  #              :computer,
-  #              :player_places,
-  #              :computer_places,
-  #              :win_type,
-  #              :winner
-  #
   def initialize
     @board = Board.new
-    #   @player = Player.new(@board.place_piece)
-    #   @computer = Computer.new(@board.place_piece)
-    #   @player_places = []
-    #   @computer_places = []
-    #   @win_type
-    #   @winner = ''
   end
 
   def start
@@ -66,10 +52,8 @@ class Game
     option
   end
 
-
-
   def take_turns
-      puts @board.render
+    puts @board.render
     while @board.empty? do
       turn = Turn.new(@player, @computer, @board)
       turn.full_board?
@@ -82,13 +66,11 @@ class Game
       player_column = player.column_choice
       @board.place_piece(user_input) << turn.player_places
 
-
       evaluate_competitor_turn(turn)
 
       computer_column = turn.find_computer_column(turn.computer_choice)
-        turn.place_computer_piece(column)
-    @board.place_piece(user_input)   << turn.computer_places
-
+      turn.place_computer_piece(column)
+      @board.place_piece(user_input) << turn.computer_places
 
       evaluate_competitor_turn(turn, 'computer')
 
@@ -97,7 +79,7 @@ class Game
       # until loop
     end
   end
-  #
+
   def evaluate_competitor_turn(turn, type_of_player)
     if turn.evaluate_tie(turn)
       end_game('', true)
@@ -111,6 +93,7 @@ class Game
       end_game(type_of_player)
     end
   end
+
   #
   # def assign_win_type(win_style)
   #   @win_type = win_style
