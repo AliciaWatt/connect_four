@@ -2,8 +2,8 @@ require 'pry'
 require_relative 'cell'
 
 class Board
-  attr_accessor :generate_cells
-  attr_reader :cells, :generate_cells, :piece
+  attr_accessor :generate_cells, :cells
+  attr_reader  :generate_cells, :piece
 
   def initialize
     @cells = Hash.new
@@ -29,12 +29,8 @@ class Board
     grid.transpose
   end
 
-  def place_piece(piece)
-    @board.cells.keys.reverse.group_by { |letter| letter[0] }
-    "Please select a valid column"
-    if user_input = get.chomp.to_str.upcase
-
-    end
+  def inputs
+    @cells.keys.reverse.group_by { |letter| letter[0] }
   end
 
   def render
@@ -49,39 +45,39 @@ class Board
     return
   end
 
-  def cell_available?(letter)
-    if @cells[letter] == "."
+  def cell_available?(cell)
+    if @cells[cell] == "."
       return true
     else
       return false
     end
   end
 
-  def column_full?(letter)
-    if columns.values_at(letter) == ('.')
+  def column_full?(cell)
+    if columns.values_at(cell) == ('.')
       return false
     else
       return true
     end
   end
 
-  # def invalid
-  #   if user_input != letters
-  #     puts "Invalid input. Please choose a proper letter."
-  #   else user_input = letters && column_full?
-  #     puts "Column is full. Please choose an empty column."
-  #   end
-  # end
-
-  def test
-    columns.map do |row|
-      row.each_cons(6) do |cell|
-        print cell.join
-      end
-      puts ""
+  def invalid
+    if piece != cell
+      puts "Invalid input. Please choose a proper cell."
+    else piece = cell && column_full?
+      puts "Column is full. Please choose an empty column."
     end
-    return
   end
+
+  def invalid
+    if user_input != letters
+      puts "Invalid input. Please choose a proper letter."
+    else user_input = letters && column_full?
+      puts "Column is full. Please choose an empty column."
+    end
+  end
+
+
 
   def diagonals
     @du1 = []; @du2 = []; @du3 = []; @du4 = []; @du5 = []; @du6 = []
@@ -103,11 +99,5 @@ class Board
     diagonal_up = [@du1, @du2, @du3, @du4, @du5, @du6]
     diagonal_down = [@dd1, @dd2, @dd3, @dd4, @dd5, @dd6]
   end
-  # binding.pry
+
 end
-board = Board.new
-board.cells["A1"] = "X"
-board.cells["A2"] = "X"
-board.cells["A3"] = "X"
-board.cells["A4"] = "X"
-# binding.pry
