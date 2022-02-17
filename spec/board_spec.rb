@@ -31,7 +31,6 @@ describe "grid" do
       expect(@board.cell_available?('A1')).to eq(false)
     end
 
-
     it 'creates columns for input' do
       @board = Board.new
       @board.grid
@@ -79,7 +78,6 @@ describe "grid" do
       expect(@board.invalid).to eq("Invalid input. Please choose a proper letter.")
       expect(@board.invliad).to eq("Column is full. Please choose an empty column.")
     end
-
   end
 end
 

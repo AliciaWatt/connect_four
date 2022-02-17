@@ -25,7 +25,6 @@ class Turn
     empty?
   end
 
-
   def place_piece
     if player == :human
       piece = inputs.keys
@@ -57,8 +56,4 @@ class Turn
   #   end
   # end
 
-# def evaluate(type)
-#   if
-
-binding.pry
 end

@@ -61,7 +61,6 @@ class Board
     end
   end
 
-
   def invalid
     if piece != cell
       puts "Invalid input. Please choose a proper cell."
@@ -70,21 +69,19 @@ class Board
     end
   end
 
-
-  def test
-    columns.map do |row|
-      row.each_cons(6) do |cell|
-        print cell.join
-      end
-      puts ""
+  def invalid
+    if user_input != letters
+      puts "Invalid input. Please choose a proper letter."
+    else user_input = letters && column_full?
+      puts "Column is full. Please choose an empty column."
     end
-    return
   end
 
 
+
   def diagonals
-    @du1 = [] ; @du2 = []; @du3 = []; @du4 = []; @du5 = []; @du6 = []
-    @dd1 = [] ; @dd2 = []; @dd3 = []; @dd4 = []; @dd5 = []; @dd6 = []
+    @du1 = []; @du2 = []; @du3 = []; @du4 = []; @du5 = []; @du6 = []
+    @dd1 = []; @dd2 = []; @dd3 = []; @dd4 = []; @dd5 = []; @dd6 = []
 
     @du1 = [['A1'], ['B2'], ['C3'], ['D4'], ['E5'], ['F6']]
     @du2 = [['B1'], ['C2'], ['D3'], ['E4'], ['F5'], ['G6']]
