@@ -13,15 +13,15 @@ RSpec.describe Cell do
     expect(@cell.type_of_player).to eq(nil)
   end
 
-  xit 'can render a "O" whe it is occupied by a computer' do
-    cell = Cell.new('computer')
-    expect(@cell.render).to eq('O')
-  end
-
-  xit 'can render a "X" when it is occupied by a player' do
-    cell = Cell.new('player')
-    expect(@cell.render).to eq('X')
-  end
+  # it 'can render a "O" whe it is occupied by a computer' do
+  #   cell = Cell.new('computer')
+  #   expect(@cell.render).to eq('O')
+  # end
+  #
+  # it 'can render a "X" when it is occupied by a player' do
+  #   cell = Cell.new('player')
+  #   expect(@cell.render).to eq('X')
+  # end
 
   it 'can render a "." when it is unoccupied' do
     expect(@cell.render).to eq('.')
