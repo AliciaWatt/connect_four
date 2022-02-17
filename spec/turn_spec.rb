@@ -6,20 +6,19 @@ require './lib/game'
 
 RSpec.describe Turn do
   before(:each) do
-    game = Game.new
-    player = game.player
-    computer = game.computer
-    turn = Turn.new(player, computer, board)
-    board = game.board
-    board.render
+    @board = Board.new
+    @player = Player.new("Player", :human)
+    @computer = Player.new("Roboto", :computer)
+    @turn = Turn.new(@player, @computer, @board)
+    @board.render
   end
   it 'exists' do
     expect(@turn).to be_instance_of(Turn)
   end
 
   it 'has attributes' do
-    expect(turn.player).to be_instance_of(Player)
-    expect(turn.computer).to be_instance_of(Computer)
+    expect(@turn.player).to be_instance_of(Player)
+    expect(@turn.computer).to be_instance_of(Player)
   end
 
   # it 'can ask a player to choose a column' do

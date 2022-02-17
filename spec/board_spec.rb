@@ -1,7 +1,7 @@
 require 'rspec'
 require 'pry'
 require './lib/board'
-require './lib/cell'
+require './lib/turn'
 
 RSpec.describe Board do
   # before(:each) do
@@ -73,7 +73,8 @@ describe "grid" do
       @board.cells['A5'] = 'X'
       @board.cells['A6'] = 'X'
 
-      @board.cells['A5'] = 'X'
+      @turn.place_piece['A6'] = 'X'
+      @turn.place_piece['T7'] = 'O'
 
       expect(@board.invalid).to eq("Invalid input. Please choose a proper letter.")
       expect(@board.invliad).to eq("Column is full. Please choose an empty column.")
