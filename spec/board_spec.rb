@@ -58,12 +58,10 @@ describe "grid" do
       @board.cells['A5'] = 'X'
       @board.cells['A6'] = 'X'
 
-      @board.cells = "A"
-
       expect(@board.column_full?(0)).to eq(true)
     end
 
-    xit 'can check for invalid inputs' do
+    it 'can check for invalid inputs' do
       @board = Board.new
       @board.grid
       @board.columns
@@ -74,6 +72,8 @@ describe "grid" do
       @board.cells['A4'] = 'X'
       @board.cells['A5'] = 'X'
       @board.cells['A6'] = 'X'
+
+      @board.cells['A5'] = 'X'
 
       expect(@board.invalid).to eq("Invalid input. Please choose a proper letter.")
       expect(@board.invliad).to eq("Column is full. Please choose an empty column.")

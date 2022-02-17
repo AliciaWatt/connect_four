@@ -70,9 +70,9 @@ class Board
   end
 
   def invalid
-    if user_input != letters
+    if piece != letters
       puts "Invalid input. Please choose a proper letter."
-    else user_input = letters && column_full?
+    else piece = letters && column_full?
       puts "Column is full. Please choose an empty column."
     end
   end
