@@ -1,7 +1,11 @@
+require 'pry'
+require './lib/board'
+
 class Turn
+  attr_accessor :board
   attr_reader :player,
               :computer,
-              :board,
+              # :board,
               :player_places,
               :computer_places,
               :win_type,
@@ -21,20 +25,40 @@ class Turn
     empty?
   end
 
-  # def prompt_player
-  #   puts
-  #   puts "Which column would you like to select?"
-  #   option = gets.chomp.upcase
-  #   if
 
-  # def starting_input
-  #   option = gets.chomp
-  #   system('clear')
-  #   until option.match?(/[p,q]{1}/i) && option.length == 1
-  #     puts "Welcome to CONNECT FOUR, Enter p to play. Enter q to quit"
-  #     option = gets.chomp
-  #     system('clear')
+  def place_piece
+    if player == :human
+      piece = inputs.keys
+      inputs[piece].first = cell
+      @board.cells[cell] = player.render
+      inputs[piece].drop(1)
+      board.render
+    elsif player == :computer
+      piece = inputs.keys
+      inputs[piece].first = cell
+      @board.cells[cell] = player.render
+      inputs[piece].drop(1)
+      board.render
+    end
+  end
+
+
+
+
+  # def type
+  #   if @board.grid == rows
+  #     :horizontal
+  #   elsif @board.grid == columns
+  #     :certical
+  #   elseif @board.grid == diagonal_up
+  #     :diagonal_up
+  #   elseif == diagonal_down
+  #     :diagonal_down
   #   end
-  #   option
   # end
+
+# def evaluate(type)
+#   if
+
+binding.pry
 end

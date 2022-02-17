@@ -59,7 +59,7 @@ describe "grid" do
       @board.cells['A5'] = 'X'
       @board.cells['A6'] = 'X'
 
-      piece = "A"
+      @board.cells = "A"
 
       expect(@board.column_full?(0)).to eq(true)
     end
